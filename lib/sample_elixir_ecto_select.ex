@@ -1,0 +1,2 @@
+defmodule SampleElixirEctoSelect do
+end
