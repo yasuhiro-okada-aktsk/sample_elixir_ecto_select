@@ -28,3 +28,11 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :sample_elixir_ecto_select, SampleElixirEctoSelect.Repo,
+  adapter: Ecto.Adapters.MySQL,
+  username: "root",
+  password: "",
+  database: "sample_elixir_ecto_select",
+  hostname: "localhost",
+  pool_size: 10
