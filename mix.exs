@@ -14,7 +14,7 @@ defmodule SampleElixirEctoSelect.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:mariaex, :ecto, :logger]]
+    [applications: apps]
   end
 
   # Dependencies can be Hex packages:
@@ -28,7 +28,17 @@ defmodule SampleElixirEctoSelect.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [ {:ecto, "~> 1.0"},
-      {:mariaex, ">= 0.0.0"}
+      {:mariaex, ">= 0.0.0"},
+      {:faker, "~> 0.5", only: [:test, :dev]}
     ]
+  end
+
+  defp apps() do
+    apps = [:mariaex, :ecto, :logger]
+    if Mix.env in [:test, :dev] do
+      apps = apps ++ [:faker]
+    end
+
+    apps
   end
 end
