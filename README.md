@@ -12,3 +12,10 @@ mix deps.get
 ```sh
 mix run priv/repo/make_fake.exs
 ```
+
+
+# run sample_select.exs
+
+```sh
+mix run mix run lib/sample_select.exs
+```
