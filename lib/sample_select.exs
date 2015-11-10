@@ -5,11 +5,26 @@ alias SampleElixirEctoSelect.RssFeed
 alias Ecto.Query
 
 require Ecto.Query
+require QueryEx
 
-feeds = RssFeed
+feed = RssFeed
 |> Query.select([f], %{ id: f.id, title: f.title })
-#|> Query.select([f], [f.id, f.title])
 |> Query.limit([u], 1)
 |> Repo.all
 
-IO.inspect feeds
+IO.puts "Ecto.Query.select: #{inspect feed}"
+
+feed = RssFeed
+|> QueryEx.select(["id", "title"])
+|> Query.limit([u], 1)
+|> Repo.all
+
+IO.puts "QueryEx.select: #{inspect feed}"
+
+
+#[{:f, [], nil}]
+#{:%{}, [],
+# [id: {{:., [], [{:f, [], nil}, :id]}, [], []},
+#  title: {{:., [], [{:f, [], nil}, :title]}, [], []}]}
+
+# "id" -> [id: {{:., [], [{:f, [], nil}, :id]}, [], []}]
