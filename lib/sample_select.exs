@@ -14,12 +14,23 @@ feed = RssFeed
 
 IO.puts "Ecto.Query.select: #{inspect feed}"
 
+
 feed = RssFeed
 |> QueryEx.select(["id", "title"])
 |> Query.limit([u], 1)
 |> Repo.all
 
-IO.puts "QueryEx.select: #{inspect feed}"
+IO.puts "QueryEx.select 1: #{inspect feed}"
+
+
+cols = ["id", "title"]
+
+feed = RssFeed
+|> QueryEx.select(cols)
+|> Query.limit([u], 1)
+|> Repo.all
+
+IO.puts "QueryEx.select 2: #{inspect feed}"
 
 
 #[{:f, [], nil}]
